@@ -3,11 +3,9 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 
 export default (props) => (
-  <View style={ props.self ? styles.viewStyleSelf : styles.viewStyle }>
-    <View style= { props.self ? styles.viewStyleSelf : styles.viewStyle }>
-      <Text style={ styles.textStyle } numberOfLines={5}>
+  <View style={ [styles.viewStyle, props.self ? styles.viewStyleSelf : styles.viewStyleNotSelf] }>
+      <Text style={ [styles.textStyle, props.self ? styles.textStyleSelf : styles.textStyleNotSelf] } >
         {props.text}
       </Text>
-    </View>
   </View>
 );

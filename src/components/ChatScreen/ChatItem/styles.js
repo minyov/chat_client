@@ -4,19 +4,26 @@ export default StyleSheet.create({
   textStyle: {
     flex: 1,
     width: '65%',
-    alignItems: 'center',
-    justifyContent: 'center',
     fontSize: 18,
-    
-  },
-  viewStyleSelf: {
-    flex: 0.8,
-    justifyContent: 'center',
-    alignItems: 'flex-end'
+    borderWidth: 1,
+    padding: 3,
   },
   viewStyle: {
-    flex: 0.8,
     justifyContent: 'center',
+    padding: 3,
+  },
+  textStyleSelf: {
+    textAlign: 'right',
+    paddingRight: 10
+  },
+  textStyleNotSelf: {
+    textAlign: 'left',
+    paddingLeft: 10
+  },
+  viewStyleSelf: {
+    alignItems: 'flex-end'
+  },
+  viewStyleNotSelf: {
     alignItems: 'flex-start'
   }
 })

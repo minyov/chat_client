@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, KeyboardAvoidingView } from 'react-native';
+import ReversedFlatList from 'react-native-reversed-flat-list';
 import ChatItem from './ChatItem';
+import ChatTextInput from './ChatTextInput';
 import styles from './styles';
 
-const fakeData = [
-  { self: false, text: 'text1 выа лоывлао ыдвлоа дфова джфылвоа джлыфвоа лрывлдао рыфвдлоар фывра длфыовра длыоврад '},
-  { self: false, text: 'textext1 выа лоывлао ыдвлоа дфова джфылвt2'},
-  { self: true, text: 'text3'},
-  { self: false, text: 'tetext1 выа лоывлао ыдвлоа дфова джфылвxt4'},
-  { self: true, text: 'text15'},
-  { self: false, text: 'textext1 выа лоывлао ыдвлоа дфова джфылвt6'},
-]
-
 class ChatScreen extends Component {
+
+  state = {
+    data: [],
+    self: true
+  }
+
+  chatInputHandler = (event) => {
+    this.setState({
+      data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text }],
+      self: !this.state.self
+    });
+  }
   
   renderItem = ({ item }) => (
     <ChatItem
@@ -24,12 +29,21 @@ class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        <FlatList
-          style={styles.listStyle}
-          data={fakeData}
-          renderItem={this.renderItem}
-          keyExtractor={(item, index) => item.text}
-        />
+        <KeyboardAvoidingView
+          behavior='padding'
+          style={{ flex: 1 }}
+        >  
+          <ReversedFlatList
+            style={styles.listStyle}
+            data={this.state.data}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => item.text}
+          />
+          <ChatTextInput 
+            style={ styles.textInputStyle }
+            chatInputHandler={ this.chatInputHandler }
+          />
+        </KeyboardAvoidingView>
       </View>
     );
   }
