@@ -21,12 +21,12 @@ export default StyleSheet.create({
     fontSize: 18
   },
   innerViewStyleSelf: {
-    textAlign: 'right',
+    // textAlign: 'right',
     backgroundColor: '#DEFFDE',
     borderColor: '#6FDA6F'
   },
   innerViewStyleNotSelf: {
-    textAlign: 'left',
+    // textAlign: 'left',
     borderColor: '#66B2FF'
   },
   viewStyleSelf: {

@@ -3,18 +3,26 @@ import { View, KeyboardAvoidingView } from 'react-native';
 import ReversedFlatList from 'react-native-reversed-flat-list';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
+import { sendMessage, recieveMessage } from '../../actions/chats';
+import { connect } from 'react-redux';
 import styles from './styles';
 
 class ChatScreen extends Component {
 
   state = {
     data: [],
-    self: true
+    self: true,
+    companion: 'tarasov'
   }
+  
 
   chatInputHandler = (event) => {
+    // this.setState({
+    //   data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text, name: 'Georgiy Tarasov' }],
+    //   self: !this.state.self
+    // });
+    this.state.self ? this.props.dispatch(sendMessage(event.nativeEvent.text)) : this.props.dispatch(recieveMessage('Georgiy', event.nativeEvent.text));
     this.setState({
-      data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text, name: 'Georgiy Tarasov' }],
       self: !this.state.self
     });
   }
@@ -36,9 +44,9 @@ class ChatScreen extends Component {
         >  
           <ReversedFlatList
             style={styles.listStyle}
-            data={this.state.data}
+            data={this.props.data}
             renderItem={this.renderItem}
-            keyExtractor={(item, index) => item.text}
+            keyExtractor={(item, index) => item.text + item.name + index}
           />
           <ChatTextInput 
             style={ styles.textInputStyle }
@@ -50,4 +58,12 @@ class ChatScreen extends Component {
   }
 }
 
-export default ChatScreen;
+function mapStateToProps(state) {
+  return {
+    data: state.chats
+  };
+};
+
+export default connect(
+  mapStateToProps
+)(ChatScreen);
