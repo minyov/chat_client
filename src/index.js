@@ -3,10 +3,9 @@ import { View, Text } from 'react-native';
 import * as api from './api';
 import ChatScreen from './components/ChatScreen';
 
-api.connect();
-api.onMessage((message) => {
-  console.log(message.data);
-});
+if (__DEV__) {
+  console.disableYellowBox = true;
+}
 
 export default App = () => (
   <View style={{ flex: 1 }}>
