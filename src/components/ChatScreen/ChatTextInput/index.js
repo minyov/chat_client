@@ -3,7 +3,7 @@ import { View, TextInput, Keyboard } from 'react-native';
 import styles from './styles';
 
 export default (props) => (
-  <View>
+  <View style={ styles.viewStyle }>
     <TextInput 
       ref={ (ref) => this.inputRef = ref }
       style={ styles.textInputStyle }
@@ -14,8 +14,8 @@ export default (props) => (
         this.inputRef.clear();
         props.chatInputHandler(event);
       }}
-      placeholder='Input text...'
-      placeholderTextColor='grey'
+      placeholder='Message'
+      placeholderTextColor='#F0F0F0'
     />
   </View>
 ); 
