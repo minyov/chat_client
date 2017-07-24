@@ -14,15 +14,16 @@ class ChatScreen extends Component {
 
   chatInputHandler = (event) => {
     this.setState({
-      data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text }],
+      data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text, name: 'Georgiy Tarasov' }],
       self: !this.state.self
     });
   }
   
   renderItem = ({ item }) => (
     <ChatItem
-      self={item.self}
-      text={item.text}
+      name={ item.name }
+      self={ item.self }
+      text={ item.text }
     />
   );
 
