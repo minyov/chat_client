@@ -4,12 +4,14 @@ export default StyleSheet.create({
   viewStyle: {
     flex: 1,
     height: 70,
-    borderWidth: 1,
     flexDirection: 'row'
   },
   innerViewStyle: {
     flex: 0.83,
-    padding: 5
+    padding: 5,
+    borderBottomWidth: 0.5,
+    // borderStyle: 0.65
+    borderColor: '#E0E0E0',
   },
   textStyle: {
     fontWeight: '600',
