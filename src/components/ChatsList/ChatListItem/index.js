@@ -15,7 +15,7 @@ class ChatListItem extends Component {
           </View>
           <View style={ styles.innerViewStyle }>
             <Text style={ styles.textStyle }>{ this.props.companion }</Text>
-            <Text style={ styles.messageTextStyle }>Text message</Text>
+            <Text style={ styles.messageTextStyle } numberOfLines={2}>{ this.props.lastMessage }</Text>
           </View>
         </View>
       </TouchableHighlight>

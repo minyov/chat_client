@@ -20,6 +20,7 @@ class ChatsList extends Component {
   renderItem = ({ item }) => (
     <ChatListItem 
       companion={ item.companion } 
+      lastMessage={ item.messages.length != 0 && item.messages[item.messages.length - 1].text } 
       onPress={() => this.onChatListItemPress(item.companion)}
     />
   );
