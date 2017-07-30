@@ -10,7 +10,6 @@ export default StyleSheet.create({
     flex: 0.83,
     padding: 5,
     borderBottomWidth: 0.5,
-    // borderStyle: 0.65
     borderColor: '#E0E0E0',
   },
   textStyle: {
