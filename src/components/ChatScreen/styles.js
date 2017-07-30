@@ -1,13 +1,17 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Image } from 'react-native';
 
 export default StyleSheet.create({
   listStyle: {
-    flex: 0.8
   },
   viewStyle: {
     flex: 1
   },
   textInputStyle: {
-    flex: 0.2
+  },
+  backgroundImage: {
+    flex: 1, 
+    resizeMode: Image.resizeMode.normalize,
+    width: null,
+    height: null
   }
 })

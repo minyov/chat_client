@@ -15,18 +15,17 @@ export default StyleSheet.create({
   viewStyle: {
     justifyContent: 'center',
     padding: 5,
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   textStyle: {
     fontSize: 18
   },
   innerViewStyleSelf: {
-    // textAlign: 'right',
     backgroundColor: '#DEFFDE',
     borderColor: '#6FDA6F'
   },
   innerViewStyleNotSelf: {
-    // textAlign: 'left',
+    backgroundColor: 'white',
     borderColor: '#66B2FF'
   },
   viewStyleSelf: {

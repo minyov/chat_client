@@ -1,39 +1,58 @@
 import React, { Component } from 'react';
-import { View, KeyboardAvoidingView } from 'react-native';
+import { Image, View, KeyboardAvoidingView } from 'react-native';
 import ReversedFlatList from 'react-native-reversed-flat-list';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
-import { sendMessage, recieveMessage } from '../../actions/chats';
+import { sendMessage, recieveMessage, addChat } from '../../actions/chats';
 import { connect } from 'react-redux';
 import styles from './styles';
 
 class ChatScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: (`${navigation.state.params.companion}`),
+    headerStyle: {
+      backgroundColor: 'white'
+    },
+    cardStyle: {
+      style: {
+        backgroundColor: 'white'
+      }
+    },
+  });
 
+
+  ///////////////////
   state = {
-    data: [],
-    self: true,
-    companion: 'tarasov'
-  }
-  
+    self: true //REMOVE WHEN BACKEND WILL BE READY
+  };
 
   chatInputHandler = (event) => {
-    // this.setState({
-    //   data: [...this.state.data, { self: this.state.self, text: event.nativeEvent.text, name: 'Georgiy Tarasov' }],
-    //   self: !this.state.self
-    // });
-    this.state.self ? this.props.dispatch(sendMessage(event.nativeEvent.text)) : this.props.dispatch(recieveMessage('Georgiy', event.nativeEvent.text));
+    this.state.self ? this.props.dispatch(sendMessage(this.props.currentCompanion, this.props.userLogin, event.nativeEvent.text)) 
+                    : this.props.dispatch(recieveMessage(this.props.currentCompanion, event.nativeEvent.text));
     this.setState({
       self: !this.state.self
     });
   }
+  ////////////////////
   
   renderItem = ({ item }) => (
     <ChatItem
       name={ item.name }
-      self={ item.self }
+      self={ this.props.userLogin === item.name }
       text={ item.text }
     />
   );
+
+  getData = (props) => {
+    const data = props.chats.find((chat) => chat.companion === this.props.currentCompanion);
+
+    console.log(data);
+    if (data != undefined) {
+      return data.messages;
+    } else {
+      return [];
+    }
+  }
 
   render() {
     return (
@@ -42,16 +61,18 @@ class ChatScreen extends Component {
           behavior='padding'
           style={{ flex: 1 }}
         >  
-          <ReversedFlatList
-            style={styles.listStyle}
-            data={this.props.data}
-            renderItem={this.renderItem}
-            keyExtractor={(item, index) => item.text + item.name + index}
-          />
-          <ChatTextInput 
-            style={ styles.textInputStyle }
-            chatInputHandler={ this.chatInputHandler }
-          />
+          <Image source={ require('../../img/wall2.jpg') } style={ styles.backgroundImage }>
+            <ReversedFlatList
+              style={styles.listStyle}
+              data={this.getData(this.props)}
+              renderItem={this.renderItem}
+              keyExtractor={(item, index) => item.text + item.name + index}
+            />
+            <ChatTextInput 
+              style={ styles.textInputStyle }
+              chatInputHandler={ this.chatInputHandler }
+            />
+          </Image>
         </KeyboardAvoidingView>
       </View>
     );
@@ -60,7 +81,9 @@ class ChatScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.chats
+    chats: state.chats,
+    userLogin: state.user.login,
+    currentCompanion: state.user.currentCompanion
   };
 };
 
