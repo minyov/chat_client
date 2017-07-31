@@ -20,6 +20,7 @@ class ChatScreen extends Component {
     },
     headerRight: (
       <TouchableHighlight
+        underlayColor='transparent'
         onPress={() => navigation.navigate('UserInfoScreen', { companion: navigation.state.params.companion })}>  
         <Image 
           source={(`${navigation.state.params.companion.photo}`)} 
@@ -58,7 +59,6 @@ class ChatScreen extends Component {
   getData = (props) => {
     const data = props.chats.find((chat) => chat.companion === this.props.currentCompanion);
 
-    console.log(data);
     if (data != undefined) {
       return data.messages;
     } else {

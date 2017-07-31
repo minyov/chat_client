@@ -1,6 +1,8 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
+import { AsyncStorage } from 'react-native';
 import { createLogger } from 'redux-logger';
 import reducers from './reducers';
+import { autoRehydrate, persistStore } from 'redux-persist';
 
 const logger = createLogger({ predicate: () => { return __DEV__ }});
 
@@ -9,5 +11,17 @@ export default configureStore = () => {
     logger
   );
 
-  return createStore(reducers, enhancer);
+  const store = createStore(
+    reducers,
+    undefined,
+    compose(
+      enhancer,
+      autoRehydrate()
+    )
+  );
+
+  persistStore(store, { storage: AsyncStorage });
+
+  return store;
 }
+

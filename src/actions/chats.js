@@ -7,10 +7,10 @@ export const sendMessage = (companion, name, text) => ({
   text: text
 });
 
-export const recieveMessage = (name, text) => ({
+export const recieveMessage = (companion, text) => ({
   type: types.RECIEVE_MESSAGE,
-  companion: name,
-  name: name,
+  companion: companion,
+  name: companion.name,
   text: text
 });
 

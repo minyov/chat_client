@@ -27,7 +27,10 @@ export const chat = (state, action) => {
         companion: action.companion,
         messages: [
           ...state.messages,
-          { name: action.name, text: action.text }
+          { 
+            name: action.name, 
+            text: action.text 
+          }
         ]
       };
     }
