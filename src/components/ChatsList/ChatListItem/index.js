@@ -14,7 +14,7 @@ class ChatListItem extends Component {
             <Image style={ styles.imageStyle } source={ require('../../../img/img.jpg') } />
           </View>
           <View style={ styles.innerViewStyle }>
-            <Text style={ styles.textStyle }>{ this.props.companion }</Text>
+            <Text style={ styles.textStyle }>{ this.props.companion.name }</Text>
             <Text style={ styles.messageTextStyle } numberOfLines={2}>{ this.props.lastMessage }</Text>
           </View>
         </View>

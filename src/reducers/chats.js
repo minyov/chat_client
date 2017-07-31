@@ -2,11 +2,19 @@ import * as types from '../types';
 
 const initialState = [
   {
-    companion: 'Georgiy',
+    companion: {
+      name: 'Georgiy',
+      email: 'test@test.ru',
+      photo: require('../img/img.jpg')
+    },
     messages: []
   },
   {
-    companion: 'Timmy',
+    companion: {
+      name: 'Timmy',
+      email: 'test@test.ru',
+      photo: require('../img/img.jpg')
+    },
     messages: []
   }
 ]

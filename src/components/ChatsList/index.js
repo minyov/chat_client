@@ -30,7 +30,7 @@ class ChatsList extends Component {
       <FlatList
         data={ this.props.chats }
         renderItem={ this.renderItem }
-        keyExtractor={ (item, index) => item.companion }
+        keyExtractor={ (item, index) => item.companion.name }
         style={{ backgroundColor: 'white' }}
       />
     )

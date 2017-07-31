@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, KeyboardAvoidingView } from 'react-native';
+import { Text, Image, View, KeyboardAvoidingView, TouchableHighlight } from 'react-native';
 import ReversedFlatList from 'react-native-reversed-flat-list';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
@@ -9,7 +9,7 @@ import styles from './styles';
 
 class ChatScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: (`${navigation.state.params.companion}`),
+    title: (`${navigation.state.params.companion.name}`),
     headerStyle: {
       backgroundColor: 'white'
     },
@@ -18,7 +18,19 @@ class ChatScreen extends Component {
         backgroundColor: 'white'
       }
     },
+    headerRight: (
+      <TouchableHighlight
+        onPress={() => navigation.navigate('UserInfoScreen', { companion: navigation.state.params.companion })}>  
+        <Image 
+          source={(`${navigation.state.params.companion.photo}`)} 
+          style={{ width: 36, height: 36, borderRadius: 18, margin: 5}}
+        />
+      </TouchableHighlight>
+      
+    )
   });
+
+
 
 
   ///////////////////

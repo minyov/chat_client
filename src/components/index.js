@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import ChatScreen from './ChatScreen';
 import ChatsList from './ChatsList';
+import UserInfoScreen from './UserInfoScreen';
 
 export default StackNavigator({
   ChatsList: { 
@@ -12,5 +13,8 @@ export default StackNavigator({
   },
   ChatScreen: { 
     screen: ChatScreen
+  },
+  UserInfoScreen: {
+    screen: UserInfoScreen
   }
 });
