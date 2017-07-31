@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { setCurrentCompanion } from '../../actions/user';
+import { TabNavigator } from 'react-navigation';
 import ChatScreen from '../ChatScreen';
 import ChatListItem from './ChatListItem';
 
