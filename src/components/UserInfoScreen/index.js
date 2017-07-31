@@ -7,7 +7,9 @@ class UserInfoScreen extends Component {
   static navigationOptions = {
     title: 'Info',
     headerStyle: {
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      borderBottomColor: '#E0E0E0',
+      borderBottomWidth: 0.3
     }
   }
   render() {

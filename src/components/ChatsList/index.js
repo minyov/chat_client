@@ -8,7 +8,9 @@ import ChatListItem from './ChatListItem';
 class ChatsList extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerStyle: {
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      borderBottomColor: '#E0E0E0',
+      borderBottomWidth: 0.3
     }
   });
 
