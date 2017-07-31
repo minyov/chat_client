@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   viewStyle: {
-    // height: 110,
     backgroundColor: 'white',
     flex: 1
   },
@@ -12,12 +11,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  imageStyle: {
+  innerImageViewStyle: {
     flex: 0.2,
+    padding: 20,
+  },
+  imageStyle: {
     height: 70,
     width: 70,
-    margin: 15,
-    borderRadius: 35
+    borderRadius: 35,
   },
   nameTextStyle: {
     flex: 0.8,
@@ -27,8 +28,5 @@ export default StyleSheet.create({
   infoViewStyle: {
     flex: 0.83,
     paddingLeft: 35
-  },
-  emailViewStyle: {
-
   }
 })

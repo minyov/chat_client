@@ -15,10 +15,12 @@ class UserInfoScreen extends Component {
     return (
       <View style={ styles.viewStyle }>
         <View style={ styles.imageViewStyle }>  
-          <Image 
-            style={ styles.imageStyle }
-            source={ companion.photo }
-          />
+          <View style={ styles.innerImageViewStyle }>
+            <Image 
+              style={ styles.imageStyle }
+              source={ companion.photo }
+            />
+          </View>
           <Text style={ styles.nameTextStyle }>{ companion.name }</Text>
         </View>
         <View style={ styles.infoViewStyle }>
