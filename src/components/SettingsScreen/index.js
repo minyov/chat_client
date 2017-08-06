@@ -5,7 +5,7 @@ class SettingsScreen extends Component {
   state = {  }
   render() {
     return (
-      <View></View>
+      <View style={{ flex: 1, backgroundColor: 'white' }}></View>
     );
   }
 }

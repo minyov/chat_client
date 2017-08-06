@@ -10,14 +10,6 @@ import styles from './styles';
 class ChatScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: (`${navigation.state.params.companion.name}`),
-    headerStyle: {
-      backgroundColor: 'white'
-    },
-    cardStyle: {
-      style: {
-        backgroundColor: 'white'
-      }
-    },
     headerRight: (
       <TouchableHighlight
         underlayColor='transparent'
@@ -27,7 +19,6 @@ class ChatScreen extends Component {
           style={{ width: 36, height: 36, borderRadius: 18, margin: 5}}
         />
       </TouchableHighlight>
-      
     )
   });
 

@@ -4,14 +4,6 @@ import AdditionalInfoPanel from './AdditionalInfoPanel';
 import styles from './styles';
 
 class UserInfoScreen extends Component {
-  static navigationOptions = {
-    title: 'Info',
-    headerStyle: {
-      backgroundColor: 'white',
-      borderBottomColor: '#E0E0E0',
-      borderBottomWidth: 0.3
-    }
-  }
   render() {
     console.log(this.props);
     const { companion } = this.props.navigation.state.params;

@@ -7,36 +7,61 @@ import ChatsList from '../components/ChatsList';
 import UserInfoScreen from '../components/UserInfoScreen';
 import SettingsScreen from '../components/SettingsScreen';
 
-const stack = StackNavigator({
-  ChatsList: { 
+const navigator = TabNavigator({
+  MainScreen: {
     screen: ChatsList,
+    navigationOptions: ({ navigation }) => ({
+      tabBarLabel: 'Chats',
+      tabBarIcon: ({ tintColor }) => 
+        <Icon name='bubbles' size={26} color={ tintColor } backgroundColor={ tintColor }/>,
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#E0E0E0',
+        borderBottomWidth: 0.5
+      }
+    }),
+  },
+  SettingsScreen: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      headerTitle: 'Settings',
+      tabBarLabel: 'Settings',
+      tabBarIcon: ({ tintColor }) => 
+        <Icon name='settings' size={26} color={ tintColor } backgroundColor={ tintColor }/>,
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#E0E0E0',
+        borderBottomWidth: 0.5
+      }
+    },
+  }
+})
+
+export const stack = StackNavigator({
+  ChatsList: { 
+    screen: navigator,
     navigationOptions: {
       title: 'Chats'
     }
   },
   ChatScreen: { 
-    screen: ChatScreen
+    screen: ChatScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white'
+      }
+    }
   },
   UserInfoScreen: {
-    screen: UserInfoScreen
+    screen: UserInfoScreen,
+    navigationOptions: {
+      title: 'Info',
+      headerStyle: {
+        backgroundColor: 'white',
+        borderBottomColor: '#E0E0E0',
+        borderBottomWidth: 0.3
+      }
+    }
   }
 });
 
-export const navigator = TabNavigator({
-  MainScreen: {
-    screen: stack,
-    navigationOptions: {
-      tabBarLabel: 'Chats',
-      tabBarIcon: ({ tintColor }) => 
-        <Icon name='bubbles' size={26} color={ tintColor } backgroundColor={ tintColor }/>
-    }
-  },
-  SettingsScreen: {
-    screen: SettingsScreen,
-    navigationOptions: {
-      tabBarLabel: 'Settings',
-      tabBarIcon: ({ tintColor }) => 
-        <Icon name='settings' size={26} color={ tintColor } backgroundColor={ tintColor }/>
-    }
-  }
-})

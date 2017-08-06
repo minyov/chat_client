@@ -7,14 +7,6 @@ import ChatScreen from '../ChatScreen';
 import ChatListItem from './ChatListItem';
 
 class ChatsList extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerStyle: {
-      backgroundColor: 'white',
-      borderBottomColor: '#E0E0E0',
-      borderBottomWidth: 0.3
-    }
-  });
-
   onChatListItemPress = (companion) => {
     this.props.dispatch(setCurrentCompanion(companion));
     this.props.navigation.navigate('ChatScreen', { companion: companion })

@@ -1,4 +1,4 @@
 import { StackNavigator } from 'react-navigation';
-import { navigator } from '../config/routes';
+import { stack } from '../config/routes';
 
-export default navigator;
+export default stack;
