@@ -64,7 +64,7 @@ class ChatScreen extends Component {
           behavior='padding'
           style={{ flex: 1 }}
         >  
-          <Image source={ require('../../img/wall2.jpg') } style={ styles.backgroundImage }>
+          <Image source={ this.props.chatWallpaper } style={ styles.backgroundImage }>
             <ReversedFlatList
               style={styles.listStyle}
               data={this.getData(this.props)}
@@ -86,7 +86,8 @@ function mapStateToProps(state) {
   return {
     chats: state.chats,
     userLogin: state.user.login,
-    currentCompanion: state.user.currentCompanion
+    currentCompanion: state.user.currentCompanion,
+    chatWallpaper: state.user.chatWallpaper
   };
 };
 

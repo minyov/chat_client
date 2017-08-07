@@ -2,7 +2,8 @@ import * as types from '../types';
 
 const initialState = {
   login: 'minyov',
-  currentCompanion: null
+  currentCompanion: null,
+  chatWallpaper: require('../img/wall2.jpg')
 };
 
 
