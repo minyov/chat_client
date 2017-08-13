@@ -11,10 +11,12 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 15,
     borderColor: '#E0E0E0',
-    height: 30,
+    height: 35,
     padding: 5,
     paddingLeft: 15,
     paddingRight: 15,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    fontSize: 18,
+
   }
 })
