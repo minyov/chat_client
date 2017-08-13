@@ -16,6 +16,7 @@ export default (props) => (
       }}
       placeholder='Message'
       placeholderTextColor='#F0F0F0'
+      underlineColorAndroid='transparent'
     />
   </View>
 ); 
