@@ -1,7 +1,7 @@
 let ws = null;
 
 export const connect = () => {
-  ws = new WebSocket("ws://localhost:8080/api");
+  ws = new WebSocket("ws://localhost:8080/websocket");
   console.log(ws);
 }
 

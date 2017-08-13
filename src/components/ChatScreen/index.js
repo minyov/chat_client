@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, Image, View, KeyboardAvoidingView, TouchableHighlight } from 'react-native';
+import { Text, Image, View, TouchableHighlight, Platform } from 'react-native';
 import ReversedFlatList from 'react-native-reversed-flat-list';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
 import { sendMessage, recieveMessage, addChat } from '../../actions/chats';
@@ -60,23 +61,23 @@ class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        <KeyboardAvoidingView
-          behavior='padding'
-          style={{ flex: 1 }}
-        >  
-          <Image source={ this.props.chatWallpaper } style={ styles.backgroundImage }>
-            <ReversedFlatList
-              style={styles.listStyle}
-              data={this.getData(this.props)}
-              renderItem={this.renderItem}
-              keyExtractor={(item, index) => item.text + item.name + index}
-            />
-            <ChatTextInput 
-              style={ styles.textInputStyle }
-              chatInputHandler={ this.chatInputHandler }
-            />
-          </Image>
-        </KeyboardAvoidingView>
+        <Image source={ this.props.chatWallpaper } style={ styles.backgroundImage }>
+          <ReversedFlatList
+            style={styles.listStyle}
+            data={this.getData(this.props)}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => item.text + item.name + index}
+          />
+          <ChatTextInput 
+            style={ styles.textInputStyle }
+            chatInputHandler={ this.chatInputHandler }
+          />
+        </Image>
+
+        {
+          Platform.OS === 'ios' && <KeyboardSpacer />
+        }
+        
       </View>
     );
   }
