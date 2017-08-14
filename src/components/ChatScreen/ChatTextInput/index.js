@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { View, TextInput, Keyboard } from 'react-native';
+import { Keyboard } from 'react-native';
 import styles from './styles';
 
 export default (props) => (

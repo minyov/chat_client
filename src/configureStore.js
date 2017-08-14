@@ -25,5 +25,5 @@ export default configureStore = () => {
   AsyncStorage.clear();
   
   return store;
-}
+};
 
