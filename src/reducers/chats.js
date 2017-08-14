@@ -3,17 +3,9 @@ import * as types from '../types';
 const initialState = [
   {
     companion: {
-      name: 'Georgiy',
+      name: 'server',
       email: 'test@test.ru',
-      photo: require('../img/img.jpg')
-    },
-    messages: []
-  },
-  {
-    companion: {
-      name: 'Timmy',
-      email: 'test@test.ru',
-      photo: require('../img/img.jpg')
+      photo: '/Users/minyov/Documents/workspace/chat_client/src/img/img.jpg'
     },
     messages: []
   }
@@ -22,14 +14,15 @@ const initialState = [
 export const chat = (state, action) => {
   if (action.type == types.RECIEVE_MESSAGE || 
         action.type == types.SEND_MESSAGE) {
-    if (action.companion === state.companion) {
+    if (action.companion.name === state.companion.name) {
       return {
         companion: action.companion,
         messages: [
           ...state.messages,
           { 
             name: action.name, 
-            text: action.text 
+            text: action.text,
+            date: action.date
           }
         ]
       };

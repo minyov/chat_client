@@ -3,7 +3,7 @@ import * as types from '../types';
 const initialState = {
   login: 'minyov',
   currentCompanion: null,
-  chatWallpaper: require('../img/wall2.jpg')
+  chatWallpaper: 'https://s-media-cache-ak0.pinimg.com/originals/51/ed/c0/51edc046eb80046ee4755ee71d0f19ca.jpg'
 };
 
 

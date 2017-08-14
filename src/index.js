@@ -10,9 +10,7 @@ if (__DEV__) {
 }
 
 api.connect();
-api.onMessage((e) => {
-  console.log(e.data);
-})
+
 
 export default App = () => (
   <Provider store={ configureStore() } >

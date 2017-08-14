@@ -5,6 +5,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
 import { sendMessage, recieveMessage, addChat } from '../../actions/chats';
+import * as api from '../../api';
 import { connect } from 'react-redux';
 import styles from './styles';
 
@@ -16,7 +17,7 @@ class ChatScreen extends Component {
         underlayColor='transparent'
         onPress={() => navigation.navigate('UserInfoScreen', { companion: navigation.state.params.companion })}>  
         <Image 
-          source={(`${navigation.state.params.companion.photo}`)} 
+          source={{ uri: `${navigation.state.params.companion.photo}` }} 
           style={{ width: 36, height: 36, borderRadius: 18, margin: 5}}
         />
       </TouchableHighlight>
@@ -24,21 +25,19 @@ class ChatScreen extends Component {
   });
 
 
-
-
-  ///////////////////
-  state = {
-    self: true //REMOVE WHEN BACKEND WILL BE READY
-  };
+  componentWillMount() {
+    console.log('mount')
+    api.onMessage((e) => {
+      const message = JSON.parse(e.data);
+      console.log(message);
+      this.props.dispatch(recieveMessage(message.sender, message.text, message.date));
+    })
+  }
 
   chatInputHandler = (event) => {
-    this.state.self ? this.props.dispatch(sendMessage(this.props.currentCompanion, this.props.userLogin, event.nativeEvent.text)) 
-                    : this.props.dispatch(recieveMessage(this.props.currentCompanion, event.nativeEvent.text));
-    this.setState({
-      self: !this.state.self
-    });
+    api.sendMessage(event.nativeEvent.text);
+    this.props.dispatch(sendMessage(this.props.currentCompanion, this.props.userLogin, event.nativeEvent.text, new Date())) 
   }
-  ////////////////////
   
   renderItem = ({ item }) => (
     <ChatItem
@@ -49,8 +48,8 @@ class ChatScreen extends Component {
   );
 
   getData = (props) => {
-    const data = props.chats.find((chat) => chat.companion === this.props.currentCompanion);
-
+    const data = props.chats.find((chat) => chat.companion.name === this.props.currentCompanion.name);
+    
     if (data != undefined) {
       return data.messages;
     } else {
@@ -61,12 +60,12 @@ class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        <Image source={ this.props.chatWallpaper } style={ styles.backgroundImage }>
+        <Image source={{ uri: this.props.chatWallpaper }} style={ styles.backgroundImage }>
           <ReversedFlatList
             style={styles.listStyle}
             data={this.getData(this.props)}
             renderItem={this.renderItem}
-            keyExtractor={(item, index) => item.text + item.name + index}
+            keyExtractor={(item, index) => item.text + item.name + item.date }
           />
           <ChatTextInput 
             style={ styles.textInputStyle }

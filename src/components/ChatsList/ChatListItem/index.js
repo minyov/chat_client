@@ -11,7 +11,7 @@ class ChatListItem extends Component {
       onPress={ this.props.onPress }>  
         <View style={ styles.viewStyle }>
           <View style={ styles.imageViewStyle } >
-            <Image style={ styles.imageStyle } source={ require('../../../img/img.jpg') } />
+            <Image style={ styles.imageStyle } source={{ uri: this.props.companion.photo }} />
           </View>
           <View style={ styles.innerViewStyle }>
             <Text style={ styles.textStyle }>{ this.props.companion.name }</Text>
