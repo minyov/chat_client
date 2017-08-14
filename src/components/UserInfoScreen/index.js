@@ -13,7 +13,7 @@ class UserInfoScreen extends Component {
           <View style={ styles.innerImageViewStyle }>
             <Image 
               style={ styles.imageStyle }
-              source={ companion.photo }
+              source={{ uri: companion.photo }}
             />
           </View>
           <Text style={ styles.nameTextStyle }>{ companion.name }</Text>

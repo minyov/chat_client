@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Text, Image, View, TouchableHighlight, Platform } from 'react-native';
 import ReversedFlatList from 'react-native-reversed-flat-list';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import dateFormat from 'dateformat';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
-import { sendMessage, recieveMessage, addChat } from '../../actions/chats';
+import { sendMessage, recieveMessage } from '../../actions/chats';
 import * as api from '../../api';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -24,31 +25,27 @@ class ChatScreen extends Component {
     )
   });
 
-
-  componentWillMount() {
-    console.log('mount')
-    api.onMessage((e) => {
-      const message = JSON.parse(e.data);
-      console.log(message);
-      this.props.dispatch(recieveMessage(message.sender, message.text, message.date));
-    })
-  }
-
   chatInputHandler = (event) => {
-    api.sendMessage(event.nativeEvent.text);
-    this.props.dispatch(sendMessage(this.props.currentCompanion, this.props.userLogin, event.nativeEvent.text, new Date())) 
+    api.sendMessage(JSON.stringify({
+      sender: this.props.user,
+      reciever: this.props.user.currentCompanion,
+      text: event.nativeEvent.text,
+      date: dateFormat(new Date(), "dd/mm/yyyy HH:MM:ss:l")
+    }));
+
+    this.props.dispatch(sendMessage(this.props.user.currentCompanion, this.props.user.userLogin, event.nativeEvent.text, new Date())) 
   }
   
   renderItem = ({ item }) => (
     <ChatItem
       name={ item.name }
-      self={ this.props.userLogin === item.name }
+      self={ this.props.user.userLogin === item.name }
       text={ item.text }
     />
   );
 
   getData = (props) => {
-    const data = props.chats.find((chat) => chat.companion.name === this.props.currentCompanion.name);
+    const data = props.chats.find((chat) => chat.companion.name === this.props.user.currentCompanion.name);
     
     if (data != undefined) {
       return data.messages;
@@ -60,7 +57,7 @@ class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        <Image source={{ uri: this.props.chatWallpaper }} style={ styles.backgroundImage }>
+        <Image source={{ uri: this.props.user.chatWallpaper }} style={ styles.backgroundImage }>
           <ReversedFlatList
             style={styles.listStyle}
             data={this.getData(this.props)}
@@ -85,9 +82,7 @@ class ChatScreen extends Component {
 function mapStateToProps(state) {
   return {
     chats: state.chats,
-    userLogin: state.user.login,
-    currentCompanion: state.user.currentCompanion,
-    chatWallpaper: state.user.chatWallpaper
+    user: state.user
   };
 };
 

@@ -1,15 +1,6 @@
 import * as types from '../types';
 
-const initialState = [
-  {
-    companion: {
-      name: 'server',
-      email: 'test@test.ru',
-      photo: '/Users/minyov/Documents/workspace/chat_client/src/img/img.jpg'
-    },
-    messages: []
-  }
-]
+const initialState = []
 
 export const chat = (state, action) => {
   if (action.type == types.RECIEVE_MESSAGE || 
@@ -48,6 +39,15 @@ export const chats = (state = initialState, action) => {
         messages: []
       }
     ];
+  }
+
+  if (action.type == types.SET_CHATS) {
+    return action.friends.map((friend) => {
+      return {
+        companion: friend,
+        messages: []
+      }
+    });
   }
 
   return state;

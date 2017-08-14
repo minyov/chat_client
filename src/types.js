@@ -1,4 +1,5 @@
 export const ADD_CHAT = 'ADD_CHAT';
+export const SET_CHATS = 'SET_CHATS';
 export const SET_CURRENT_COMPANION = 'SET_CURRENT_CHAT';
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';

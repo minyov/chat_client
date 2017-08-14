@@ -20,3 +20,8 @@ export const addChat = (companion) => ({
   type: types.ADD_CHAT,
   companion: companion
 });
+
+export const setChats = (friends) => ({
+  type: types.SET_CHATS,
+  friends: friends
+});

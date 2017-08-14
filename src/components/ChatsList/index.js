@@ -2,12 +2,35 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { setCurrentCompanion } from '../../actions/user';
+import * as api from '../../api';
+import { setUser } from '../../actions/user';
+import { setChats, recieveMessage } from '../../actions/chats';
 import { TabNavigator } from 'react-navigation';
 import ChatScreen from '../ChatScreen';
 import ChatListItem from './ChatListItem';
 
 class ChatsList extends Component {
+
+  componentWillMount() {
+    api.getUser('minyov', (user) => {
+      this.props.dispatch(setUser(user));
+
+      api.getFriendsOfUser(user.name, (friends) => {
+        this.props.dispatch(setChats(friends));    
+        
+        api.connect(user.name);
+
+        api.onMessage((e) => {
+          const message = JSON.parse(e.data);
+    
+          this.props.dispatch(recieveMessage(message.sender, message.text, message.date));
+        })
+      });
+    });
+  }
+
   onChatListItemPress = (companion) => {
+    console.log(companion);
     this.props.dispatch(setCurrentCompanion(companion));
     this.props.navigation.navigate('ChatScreen', { companion: companion })
   };

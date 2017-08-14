@@ -9,9 +9,6 @@ if (__DEV__) {
   console.disableYellowBox = true;
 }
 
-api.connect();
-
-
 export default App = () => (
   <Provider store={ configureStore() } >
       <Navigator />
