@@ -7,8 +7,8 @@ class ChatListItem extends Component {
   render() {
     return (
       <TouchableHighlight
-      underlayColor='#D2D2D2'
-      onPress={ this.props.onPress }>  
+        underlayColor='#D2D2D2'
+        onPress={ this.props.onPress }>  
         <View style={ styles.viewStyle }>
           <View style={ styles.imageViewStyle } >
             <Image style={ styles.imageStyle } source={{ uri: this.props.companion.photo }} />

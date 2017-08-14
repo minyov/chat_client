@@ -8,4 +8,4 @@ export const setUser = (credentials) => ({
 export const setCurrentCompanion = (currentCompanion) => ({
   type: types.SET_CURRENT_COMPANION,
   currentCompanion: currentCompanion
-})
+});

@@ -41,4 +41,4 @@ export default StyleSheet.create({
     paddingBottom: 2,
     color: '#66B2FF'
   }
-})
+});

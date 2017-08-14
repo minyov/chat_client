@@ -19,4 +19,4 @@ export default StyleSheet.create({
     fontSize: 18,
 
   }
-})
+});

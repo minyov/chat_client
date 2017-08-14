@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 
 export default StyleSheet.create({
   listStyle: {
@@ -14,4 +14,4 @@ export default StyleSheet.create({
     width: null,
     height: null
   }
-})
+});
