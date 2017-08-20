@@ -25,3 +25,9 @@ export const setChats = (friends) => ({
   type: types.SET_CHATS,
   friends: friends
 });
+
+export const setChatMessages = (companion, messages) => ({
+  type: types.SET_CHAT_MESSAGES,
+  messages: messages,
+  companion: companion  
+});

@@ -22,7 +22,7 @@ export default configureStore = () => {
 
   persistStore(store, { storage: AsyncStorage });
 
-  AsyncStorage.clear();
+  // AsyncStorage.clear();
   
   return store;
 };

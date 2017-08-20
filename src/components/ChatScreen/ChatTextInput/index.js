@@ -1,4 +1,5 @@
-import { Keyboard } from 'react-native';
+import React, { Component } from 'react';
+import { View, TextInput, Keyboard } from 'react-native';
 import styles from './styles';
 
 export default (props) => (
@@ -9,7 +10,7 @@ export default (props) => (
       keyboardType='default'
       returnKeyType='send'
       onSubmitEditing={ (event) => {
-        Keyboard.dismiss();
+        //Keyboard.dismiss();
         this.inputRef.clear();
         props.chatInputHandler(event);
       }}

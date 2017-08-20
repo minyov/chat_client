@@ -5,7 +5,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import dateFormat from 'dateformat';
 import ChatItem from './ChatItem';
 import ChatTextInput from './ChatTextInput';
-import { sendMessage, recieveMessage } from '../../actions/chats';
+import { sendMessage, recieveMessage, setChatMessages } from '../../actions/chats';
 import * as api from '../../api';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -25,21 +25,28 @@ class ChatScreen extends Component {
     )
   });
 
+  componentWillMount() {
+    api.getChatMessages(this.props.user.name, this.props.user.currentCompanion.name, (messages) => {
+      console.log(messages);
+      this.props.dispatch(setChatMessages(this.props.user.currentCompanion, messages));
+    })
+  }
+
   chatInputHandler = (event) => {
     api.sendMessage(JSON.stringify({
       sender: this.props.user,
-      reciever: this.props.user.currentCompanion,
+      receiver: this.props.user.currentCompanion,
       text: event.nativeEvent.text,
       date: dateFormat(new Date(), "dd/mm/yyyy HH:MM:ss:l")
     }));
 
-    this.props.dispatch(sendMessage(this.props.user.currentCompanion, this.props.user.userLogin, event.nativeEvent.text, new Date())) 
+    this.props.dispatch(sendMessage(this.props.user.currentCompanion, this.props.user.name, event.nativeEvent.text, new Date())) 
   }
   
   renderItem = ({ item }) => (
     <ChatItem
       name={ item.name }
-      self={ this.props.user.userLogin === item.name }
+      self={ this.props.user.name === item.name }
       text={ item.text }
     />
   );

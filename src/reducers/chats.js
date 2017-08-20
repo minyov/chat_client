@@ -23,11 +23,34 @@ export const chat = (state, action) => {
   return state;
 }
 
+export const message = (message, action) => {
+  return { 
+    name: message.sender.name, 
+    text: message.text,
+    date: message.date
+  };
+}
+
 export const chats = (state = initialState, action) => {
   if (action.type == types.RECIEVE_MESSAGE || 
         action.type == types.SEND_MESSAGE) {
     return state.map((state) => {
       return chat(state, action);
+    })
+  }
+
+  if (action.type == types.SET_CHAT_MESSAGES) {
+    return state.map((state) => {
+      if (state.companion.name == action.companion.name) {
+        return {
+          ...state,
+          messages: action.messages.map((mes) => {
+            return message(mes, action); 
+          })
+        }
+      }
+      
+      return state;
     })
   }
 
@@ -42,10 +65,23 @@ export const chats = (state = initialState, action) => {
   }
 
   if (action.type == types.SET_CHATS) {
+    console.log(state.chats);
+    
     return action.friends.map((friend) => {
-      return {
-        companion: friend,
-        messages: []
+      if (state.chats != undefined) {
+        return {
+          companion: friend,
+          messages: [
+            ...state.chats.find((elem) => {
+              return elem.companion.name == friend.name;
+            }).messages
+          ]
+        }
+      } else {
+        return {
+          companion: friend,
+          messages: []
+        }
       }
     });
   }
