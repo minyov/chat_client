@@ -80,13 +80,5 @@ class Stack extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-}
-
-export default connect(
-  mapStateToProps
-)(Stack);
+export default connect()(Stack);
 

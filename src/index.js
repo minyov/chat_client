@@ -27,7 +27,7 @@ class App extends Component {
     if (this.state.rehydrated) {
       return (
         <Provider store={ store } >
-          <Navigator />
+          <Navigator user={ store.getState().user }/>
         </Provider>
       );
     } else {
