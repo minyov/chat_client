@@ -26,8 +26,9 @@ class ChatScreen extends Component {
   });
 
   componentWillMount() {
+    console.log(this.props.user.name)
+    console.log(this.props.user.currentCompanion.name)
     api.getChatMessages(this.props.user.name, this.props.user.currentCompanion.name, (messages) => {
-      console.log(messages);
       this.props.dispatch(setChatMessages(this.props.user.currentCompanion, messages));
     })
   }

@@ -6,6 +6,7 @@ import ChatScreen from '../components/ChatScreen';
 import ChatsList from '../components/ChatsList';
 import UserInfoScreen from '../components/UserInfoScreen';
 import SettingsScreen from '../components/SettingsScreen';
+import LoginPage from '../components/LoginPage';
 
 const navigator = TabNavigator({
   MainScreen: {
@@ -38,10 +39,17 @@ const navigator = TabNavigator({
 })
 
 export const stack = StackNavigator({
+  LoginPage: {
+    screen: LoginPage,
+    navigationOptions: {
+      header: null
+    }
+  },
   ChatsList: { 
     screen: navigator,
     navigationOptions: {
-      title: 'Chats'
+      title: 'Chats',
+      headerLeft: null
     }
   },
   ChatScreen: { 

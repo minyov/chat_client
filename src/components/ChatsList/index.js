@@ -10,27 +10,21 @@ import ChatScreen from '../ChatScreen';
 import ChatListItem from './ChatListItem';
 
 class ChatsList extends Component {
-
   componentWillMount() {
-    api.getUser('minyov', (user) => {
-      this.props.dispatch(setUser(user));
+    api.getFriendsOfUser(this.props.user.name, (friends) => {
+      this.props.dispatch(setChats(friends));    
+      
+      api.connect(this.props.user.name);
 
-      api.getFriendsOfUser(user.name, (friends) => {
-        this.props.dispatch(setChats(friends));    
-        
-        api.connect(user.name);
-
-        api.onMessage((e) => {
-          const message = JSON.parse(e.data);
-    
-          this.props.dispatch(recieveMessage(message.sender, message.text, message.date));
-        })
-      });
+      api.onMessage((e) => {
+        const message = JSON.parse(e.data);
+  
+        this.props.dispatch(recieveMessage(message.sender, message.text, message.date));
+      })
     });
   }
 
   onChatListItemPress = (companion) => {
-    console.log(companion);
     this.props.dispatch(setCurrentCompanion(companion));
     this.props.navigation.navigate('ChatScreen', { companion: companion })
   };
@@ -57,7 +51,8 @@ class ChatsList extends Component {
 
 function mapStateToProps(state) {
   return {
-    chats: state.chats
+    chats: state.chats,
+    user: state.user
   }
 }
 
