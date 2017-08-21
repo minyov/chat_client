@@ -35,6 +35,7 @@ class LoginPage extends Component {
             style={ styles.textInputStyle }
           />
           <TouchableHighlight 
+            underlayColor='transparent'
             style={ styles.touchableStyle }
             onPress={ () => {
               this.login(this.loginRef.getText(), this.passwordRef.getText())

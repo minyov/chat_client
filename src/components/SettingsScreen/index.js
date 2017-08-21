@@ -8,6 +8,7 @@ class SettingsScreen extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <TouchableHighlight 
+          underlayColor='transparent'
           onPress={ () => {
             this.props.navigation.navigate('LoginPage');
             this.props.dispatch(logout());
