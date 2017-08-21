@@ -9,3 +9,7 @@ export const setCurrentCompanion = (currentCompanion) => ({
   type: types.SET_CURRENT_COMPANION,
   currentCompanion: currentCompanion
 });
+
+export const logout = () => ({
+  type: types.USER_LOGOUT
+});

@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { View, Text, TouchableHighlight } from 'react-native';
+import { logout } from '../../actions/user';
 
 class SettingsScreen extends Component {
-  state = {  }
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}></View>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <TouchableHighlight 
+          onPress={ () => this.props.dispatch(logout())}
+        >
+          <Text>Log Out</Text>
+        </TouchableHighlight>
+      </View>
     );
   }
 }
 
-export default SettingsScreen;
+export default connect()(SettingsScreen);

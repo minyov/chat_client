@@ -31,7 +31,6 @@ class App extends Component {
         </Provider>
       );
     } else {
-      console.log("hhh")
       return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <ActivityIndicator />
