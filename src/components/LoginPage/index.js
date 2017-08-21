@@ -32,7 +32,6 @@ class LoginPage extends Component {
           <TouchableHighlight 
             style={ styles.touchableStyle }
             onPress={ () => {
-              console.log("press")
               this.login(this.loginRef.getText(), this.passwordRef.getText())
             }}
           >

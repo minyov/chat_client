@@ -5,7 +5,6 @@ import styles from './styles';
 
 class UserInfoScreen extends Component {
   render() {
-    console.log(this.props);
     const { companion } = this.props.navigation.state.params;
     return (
       <View style={ styles.viewStyle }>

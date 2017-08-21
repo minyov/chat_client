@@ -65,7 +65,7 @@ export const auth = async (userName, callback) => {
       + userName);
 
     const json = await response.json();
-    console.log(json)
+    
     callback(json);
   } catch (err) {
     console.log(err);

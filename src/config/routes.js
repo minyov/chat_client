@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import React, { Component } from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import ChatScreen from '../components/ChatScreen';
 import ChatsList from '../components/ChatsList';
@@ -38,38 +39,54 @@ const navigator = TabNavigator({
   }
 })
 
-export const stack = StackNavigator({
-  LoginPage: {
-    screen: LoginPage,
-    navigationOptions: {
-      header: null
-    }
-  },
-  ChatsList: { 
-    screen: navigator,
-    navigationOptions: {
-      title: 'Chats',
-      headerLeft: null
-    }
-  },
-  ChatScreen: { 
-    screen: ChatScreen,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'white'
+class Stack extends Component {
+  render() {
+    const Navigator = StackNavigator({
+      LoginPage: {
+        screen: LoginPage,
+        navigationOptions: {
+          header: null
+        }
+      },
+      ChatsList: { 
+        screen: navigator,
+        navigationOptions: {
+          title: 'Chats',
+          headerLeft: null
+        }
+      },
+      ChatScreen: { 
+        screen: ChatScreen,
+        navigationOptions: {
+          headerStyle: {
+            backgroundColor: 'white'
+          }
+        }
+      },
+      UserInfoScreen: {
+        screen: UserInfoScreen,
+        navigationOptions: {
+          title: 'Info',
+          headerStyle: {
+            backgroundColor: 'white',
+            borderBottomColor: '#E0E0E0',
+            borderBottomWidth: 0.3
+          }
+        }
       }
-    }
-  },
-  UserInfoScreen: {
-    screen: UserInfoScreen,
-    navigationOptions: {
-      title: 'Info',
-      headerStyle: {
-        backgroundColor: 'white',
-        borderBottomColor: '#E0E0E0',
-        borderBottomWidth: 0.3
-      }
-    }
+    }, { initialRouteName: this.props.user.name != undefined ? 'ChatsList' : 'LoginPage' })
+
+    return <Navigator />;
   }
-});
+}
+
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(Stack);
 

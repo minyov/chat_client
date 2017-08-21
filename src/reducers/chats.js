@@ -64,9 +64,7 @@ export const chats = (state = initialState, action) => {
     ];
   }
 
-  if (action.type == types.SET_CHATS) {
-    console.log(state.chats);
-    
+  if (action.type == types.SET_CHATS) {    
     return action.friends.map((friend) => {
       if (state.chats != undefined) {
         return {
