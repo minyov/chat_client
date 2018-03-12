@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 let ws = null;
 
 export const connect = (userName) => {
-  ws = new WebSocket(Platform.OS === 'ios' ? "ws://10.0.1.2:8080/websocket" : "ws://10.0.1.2:8080/websocket");
+  ws = new WebSocket(Platform.OS === 'ios' ? "ws://localhost:8080/websocket" : "ws://localhost:8080/websocket");
   
   ws.onopen = (e) => {
     ws.send(userName);
@@ -32,7 +32,7 @@ export const sendMessage = (message) => {
 
 export const getFriendsOfUser = async (name, callback) => {
   try {
-    const response = await fetch("http://10.0.1.2:8080/api/getFriends/" + name);
+    const response = await fetch("http://localhost:8080/api/getFriends/" + name);
 
     const json = await response.json();
 
@@ -45,7 +45,7 @@ export const getFriendsOfUser = async (name, callback) => {
 export const getChatMessages = async (senderName, receiverName, callback) => {
   try {
     const response = await fetch(
-      "http://10.0.1.2:8080/api/getMessages?senderName=" 
+      "http://localhost:8080/api/getMessages?senderName=" 
       + senderName 
       + "&receiverName=" 
       + receiverName);
@@ -61,7 +61,7 @@ export const getChatMessages = async (senderName, receiverName, callback) => {
 export const auth = async (userName, callback) => {
   try {
     const response = await fetch(
-      "http://10.0.1.2:8080/api/login?userName=" 
+      "http://localhost:8080/api/login?userName=" 
       + userName);
 
     const json = await response.json();
