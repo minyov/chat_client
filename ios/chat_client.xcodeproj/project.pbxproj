@@ -532,6 +532,7 @@
 				00E356EF1AD99517003FC87E /* chat_clientTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				E61F89F19D994864BA1DA679 /* Resources */,
+				A598B47F20564F9F00CC04CD /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -546,6 +547,14 @@
 				2D02E4901E0B4A5D006451C7 /* chat_client-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A598B47F20564F9F00CC04CD /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0894EFA6A60C4159B86B59D4 /* libRNVectorIcons.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		E61F89F19D994864BA1DA679 /* Resources */ = {
@@ -662,7 +671,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 8S37TNRX3C;
+						DevelopmentTeam = MYZ5VQHJ3Z;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1160,7 +1169,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 8S37TNRX3C;
+				DEVELOPMENT_TEAM = MYZ5VQHJ3Z;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1173,7 +1182,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = minyov.chat;
+				PRODUCT_BUNDLE_IDENTIFIER = minyov.chat11111;
 				PRODUCT_NAME = chat_client;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1187,7 +1196,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8S37TNRX3C;
+				DEVELOPMENT_TEAM = MYZ5VQHJ3Z;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1200,7 +1209,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = minyov.chat;
+				PRODUCT_BUNDLE_IDENTIFIER = minyov.chat11111;
 				PRODUCT_NAME = chat_client;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
